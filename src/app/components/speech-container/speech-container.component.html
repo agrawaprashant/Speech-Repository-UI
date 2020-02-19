@@ -1,0 +1,19 @@
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Speeches by Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+          >Speech By Others</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-sm-6" *ngFor="let speech of speeches">
+      <app-speech [speech]="speech"></app-speech>
+    </div>
+  </div>
+</div>

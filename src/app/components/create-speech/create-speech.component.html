@@ -1,0 +1,97 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="card text-center card-form">
+        <div class="card-body">
+          <div class="row">
+            <h5>Create A Speech</h5>
+          </div>
+          <form [formGroup]="speechForm" (ngSubmit)="onCreateSpeech()">
+            <div class="form-group row">
+              <label
+                for="title"
+                class="col-sm-2 col-form-label"
+                style="color: #ffffff; font-family: Roboto"
+                ><span class="redAsterisk">*</span> Title</label
+              >
+
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Title"
+                  formControlName="title"
+                />
+                <span
+                  class="form-text"
+                  *ngIf="
+                    !speechForm.get('title').valid &&
+                    speechForm.get('title').touched
+                  "
+                  >Title is required!</span
+                >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                for="speechText"
+                class="col-sm-2 col-form-label"
+                style="color: #ffffff; font-family: Roboto"
+                ><span class="redAsterisk">*</span> Speech Text</label
+              >
+              <div class="col-sm-10">
+                <textarea
+                  name="commText"
+                  cols="10"
+                  rows="5"
+                  class="form-control"
+                  placeholder="Enter Speech Text"
+                  formControlName="text"
+                ></textarea>
+                <span
+                  *ngIf="
+                    !speechForm.get('text').valid &&
+                    speechForm.get('text').touched
+                  "
+                  class="form-text"
+                  >Speech Text is required!</span
+                >
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label
+                for="author"
+                class="col-sm-2 col-form-label"
+                style="color: #ffffff; font-family: Roboto"
+                ><span class="redAsterisk">*</span> Author Name</label
+              >
+
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Author Name"
+                  formControlName="author"
+                />
+                <span
+                  class="form-text"
+                  *ngIf="
+                    !speechForm.get('author').valid &&
+                    speechForm.get('author').touched
+                  "
+                  >Author Name is required!</span
+                >
+              </div>
+            </div>
+            <hr />
+            <button class="btn btn-success" type="submit">Create Speech</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<div class="col-xs-12 col-12 col-md-4 form-group"></div>
