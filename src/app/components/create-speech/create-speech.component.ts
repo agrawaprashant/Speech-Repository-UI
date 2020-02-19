@@ -2,6 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Speech } from "src/app/model/speech-model";
 import { SpeechService } from "src/app/service/speech.service";
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Router
+} from "@angular/router";
 
 @Component({
   selector: "app-create-speech",
@@ -9,7 +14,7 @@ import { SpeechService } from "src/app/service/speech.service";
   styleUrls: ["./create-speech.component.css"]
 })
 export class CreateSpeechComponent implements OnInit {
-  constructor(private speechService: SpeechService) {}
+  constructor(private speechService: SpeechService, private route: Router) {}
   speechForm: FormGroup;
   ngOnInit() {
     this.speechForm = new FormGroup({
@@ -27,8 +32,8 @@ export class CreateSpeechComponent implements OnInit {
       date: new Date()
     };
 
-    this.speechService.postSpeech(speech).subscribe(data => {
-      console.log(data);
+    this.speechService.postSpeech(speech).subscribe(() => {
+      this.route.navigate(["/show-speech"]);
     });
   }
 }
