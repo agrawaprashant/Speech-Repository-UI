@@ -12,7 +12,8 @@ import { FormGroup, FormControl } from "@angular/forms";
 export class SpeechContainerComponent implements OnInit, DoCheck {
   constructor(private speech: SpeechService) {}
   // searchForm: FormGroup;
-  searchString: string = "";
+  isMyTabOpen: boolean = true;
+  searchString: string = "Prashant";
   speeches: Speech[] = [
     {
       title: "Test Title1",
@@ -57,6 +58,19 @@ export class SpeechContainerComponent implements OnInit, DoCheck {
   ngDoCheck() {}
 
   onSearch(searchKeyword: string) {
+    if (this.isMyTabOpen) {
+      this.searchString = "Prashant";
+    }
     this.searchString = searchKeyword;
+  }
+
+  onSelectTab(user: string) {
+    if (user === "me") {
+      this.isMyTabOpen = true;
+      this.searchString = "Prashant";
+    } else {
+      this.isMyTabOpen = false;
+      this.searchString = "";
+    }
   }
 }

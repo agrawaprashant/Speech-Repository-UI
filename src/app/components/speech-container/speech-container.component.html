@@ -7,6 +7,7 @@
           routerLink="/show-speech/"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
+          (click)="onSelectTab('me')"
           >Speeches by Me</a
         >
       </li>
@@ -18,15 +19,20 @@
           [routerLinkActiveOptions]="{ exact: true }"
           tabindex="-1"
           aria-disabled="true"
-          >Speech By Others</a
+          (click)="onSelectTab('other')"
+          >All Speeches</a
         >
       </li>
       <li>
-        <form class="form-inline my-2 my-lg-0" style="margin-left: 40rem">
+        <form
+          *ngIf="!isMyTabOpen"
+          class="form-inline my-2 my-lg-0"
+          style="margin-left: 40rem"
+        >
           <input
             class="form-control mr-sm-2"
             type="search"
-            placeholder="Search by Author or Title"
+            placeholder="Author or Title"
             aria-label="Search"
             (change)="onSearch($event.target.value)"
           />
