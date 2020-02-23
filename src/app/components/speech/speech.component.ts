@@ -9,5 +9,11 @@ import { Speech } from "src/app/model/speech-model";
 export class SpeechComponent implements OnInit {
   constructor() {}
   @Input() speech: Speech;
+  @Input() dataTarget: string;
   ngOnInit() {}
+
+  onClickModal(element) {
+    console.log(this.dataTarget);
+    console.log(element);
+  }
 }

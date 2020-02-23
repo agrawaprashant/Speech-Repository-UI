@@ -10,6 +10,8 @@ import { FilterPanelComponent } from "./components/filter-panel/filter-panel.com
 import { SpeechContainerComponent } from "./components/speech-container/speech-container.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SpeechShortenPipe } from "./pipes/speech-shorten.pipe";
+import { FilterPipe } from "./pipes/filter.pipe";
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     CreateSpeechComponent,
     SpeechComponent,
     FilterPanelComponent,
-    SpeechContainerComponent
+    SpeechContainerComponent,
+    SpeechShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

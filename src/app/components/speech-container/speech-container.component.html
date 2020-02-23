@@ -2,18 +2,47 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Speeches by Me</a>
+        <a
+          class="nav-link"
+          routerLink="/show-speech/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Speeches by Me</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"
+        <a
+          class="nav-link"
+          routerLink="/show-speech/others"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          tabindex="-1"
+          aria-disabled="true"
           >Speech By Others</a
         >
+      </li>
+      <li>
+        <form class="form-inline my-2 my-lg-0" style="margin-left: 40rem">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search by Author or Title"
+            aria-label="Search"
+            (change)="onSearch($event.target.value)"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
       </li>
     </ul>
   </div>
   <div class="row">
-    <div class="col-sm-6" *ngFor="let speech of speeches">
-      <app-speech [speech]="speech"></app-speech>
+    <div
+      class="col-sm-6"
+      *ngFor="let speech of speeches | filter: searchString; let i = index"
+    >
+      <app-speech [speech]="speech" [dataTarget]="i"></app-speech>
     </div>
   </div>
 </div>

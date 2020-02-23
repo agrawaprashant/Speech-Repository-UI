@@ -8,7 +8,16 @@ const routes: Routes = [
     path: "create-speech",
     component: CreateSpeechComponent
   },
-  { path: "show-speech", component: SpeechContainerComponent }
+  {
+    path: "show-speech",
+    component: SpeechContainerComponent,
+    children: [
+      {
+        path: "others",
+        component: SpeechContainerComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
